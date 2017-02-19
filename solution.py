@@ -20,11 +20,20 @@ def naked_twins(values):
     """
 
     # Find all instances of naked twins
+
     # Eliminate the naked twins as possibilities for their peers
+    pass
 
 def cross(A, B):
     "Cross product of elements in A and elements in B."
-    pass
+    return [x+y for x in A for y in B]
+
+rows = 'ABCDEFGHI'
+cols = '123456789'
+boxes = cross(rows,cols)
+rowBoxes = [cross(r,cols) for r in rows]
+colBoxes = [cross(rows,c) for c in cols]
+squareBoxes = [cross(r,c) for r in ['ABC','DEF','GHI'] for c in ['123','456','789']]
 
 def grid_values(grid):
     """
@@ -36,7 +45,8 @@ def grid_values(grid):
             Keys: The boxes, e.g., 'A1'
             Values: The value in each box, e.g., '8'. If the box has no value, then the value will be '123456789'.
     """
-    pass
+    assert(len(grid) == 81)
+    return dict(zip(boxes,grid))
 
 def display(values):
     """
@@ -44,7 +54,26 @@ def display(values):
     Args:
         values(dict): The sudoku in dictionary form
     """
-    pass
+    maxLen = max([len(values[b]) for b in boxes])
+    countRow = 0
+    for r in rowBoxes:
+        if countRow % 3 == 0:
+            print(
+                ('+'+'-'*((maxLen+1)*3+1))*3+'+'
+            )
+        countRow += 1
+        countCol = 0
+        print('|',end='')
+        for box in r:
+            print(values[box]+' ',end='')
+            countCol += 1
+            if countCol % 3 == 0:
+                print('|',end='')
+        print('')
+    return 0
+
+
+
 
 def eliminate(values):
     pass
@@ -53,7 +82,10 @@ def only_choice(values):
     pass
 
 def reduce_puzzle(values):
-    pass
+    values = eliminate (values)
+    values = naked_twins (values)
+    return only_choice (values)
+
 
 def search(values):
     pass
