@@ -3,11 +3,11 @@
 
 # Question 1 (Naked Twins)
 Q: How do we use constraint propagation to solve the naked twins problem?  
-A: I iterated through all possible twins and find all the twins and then eliminate the possible values from all their neighbors in the shared region. we use constraint propagation
+A: I iterated through all possible twins and find all the twins and then eliminate the possible values from all their neighbors in the shared region. we use constraint propagation to utilize the constraint and based on the conditions. we find, we adjust our answer.
 
 # Question 2 (Diagonal Sudoku)
 Q: How do we use constraint propagation to solve the diagonal sudoku problem?  
-A: *Student should provide answer here*
+A: I use constraint propagation simply by creating a list of those 2 possible diagonals and make it in the same format as others which are in the same row and in the same col. and generate a list of all the neighbors(exclude themselves) for all boxes.
 
 ### Install
 
